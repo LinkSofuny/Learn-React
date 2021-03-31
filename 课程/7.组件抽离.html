@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="../React/old/react.development.js"></script>
+    <script src="../React/old/react-dom.development.js"></script>
+    <script src="../React/old/babel.min.js"></script>
+    <script type="text/babel">
+      class UserInfo extends React.Component {
+        constructor(props) {
+          super(props)
+        }
+        render() {
+          return (
+            <div>
+              <h1>{this.props.user.name}</h1>
+              <h2>{this.props.user.age}</h2>
+              <Kill user={this.props.user} />
+            </div>
+          )
+        }
+      }
+      function Kill(props) {
+        return (
+          <div>
+            <span>{props.user.sex}</span>
+          </div>
+        )
+      }
+      let user = {
+        name: 'link',
+        age: 18,
+        sex: 'boy',
+        kill: {
+          sleep: 111111,
+          eat: 2
+        }
+      }
+      ReactDOM.render(<UserInfo user={user} />, document.querySelector('#test'))
+    </script>
+  </body>
+</html>
