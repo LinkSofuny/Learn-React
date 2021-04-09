@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="test"></div>
+    <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+    <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+    <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+    <script type="text/babel">
+      // 1. 有一个父组件包裹两个目标子组件
+      // 2. 将要控制的子组件的目标state, 作为父组件的state然后基于props传入
+      // 3. 通过props传入一个具有setState函数的事件, 在子组件内部通过事件去影响他
+      // 4. 如何将他们两个结合起来
+      const scaleNames = {
+        c: 'Celsius',
+        f: 'Fahrenheit'
+      }
+
+      function toCelsius(fahrenheit) {
+        return ((fahrenheit - 32) * 5) / 9
+      }
+
+      function toFahrenheit(celsius) {
+        return (celsius * 9) / 5 + 32
+      }
+
+      function tryConvert(temperature, convert) {
+        const input = parseFloat(temperature)
+        if (Number.isNaN(input)) {
+          return ''
+        }
+        const output = convert(input)
+        const rounded = Math.round(output * 1000) / 1000
+        return rounded.toString()
+      }
+
+      function BolingVerdice(props) {
+        if (props.celsius >= 100) {
+          return <p>沸腾</p>
+        }
+        return <p>不沸腾</p>
+      }
+      // 子组件
+      class TemperatureInput extends React.Component {
+        constructor(props) {
+          super(props)
+          this.handleChange = this.handleChange.bind(this)
+        }
+        handleChange(e) {
+          this.props.onChangeHandle(e.target.value)
+        }
+        render() {
+          const scale = this.props.scale
+          const temperature = this.props.temperature
+          return (
+            <fieldset>
+              <legend>Enter temperature in {scaleNames[scale]}</legend>
+              <input type="text" onChange={this.handleChange} value={temperature} />
+            </fieldset>
+          )
+        }
+      }
+      // 父组件
+      class Caculator extends React.Component {
+        constructor(props) {
+          super(props)
+          this.state = { temperature: '', scale: 'c' }
+          this.handletoCelsiusChang = this.handletoCelsiusChang.bind(this)
+          this.handletoFahrenheitChang = this.handletoFahrenheitChang.bind(this)
+        }
+        handletoCelsiusChang(temperature) {
+          this.setState({ temperature, scale: 'c' })
+        }
+        handletoFahrenheitChang(temperature) {
+          this.setState({ temperature, scale: 'f' })
+        }
+        render() {
+          const temperature = this.state.temperature
+          const scale = this.state.scale
+          const celsius = scale === 'f' ? tryConvert(temperature, toCelsius) : temperature
+          const fahrenheit = scale === 'c' ? tryConvert(temperature, toFahrenheit) : temperature
+          return (
+            // 传入用于控制的父组件state的时间
+            <div>
+              <TemperatureInput scale="c" temperature={celsius} onChangeHandle={this.handletoCelsiusChang} />
+              <TemperatureInput scale="f" temperature={fahrenheit} onChangeHandle={this.handletoFahrenheitChang} />
+              <BolingVerdice celsius={parseFloat(celsius)} />
+            </div>
+          )
+        }
+      }
+
+      ReactDOM.render(<Caculator />, document.querySelector('#test'))
+    </script>
+  </body>
+</html>
