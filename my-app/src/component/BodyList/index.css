@@ -1,0 +1,8 @@
+.body-list {
+  overflow-y: scroll;
+  height: 180px;
+  margin-top: 10px;
+  border: 1px solid red;
+}
+.body-item {
+}
