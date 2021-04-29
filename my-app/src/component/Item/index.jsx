@@ -20,8 +20,8 @@ export default class Item extends Component {
       isShow: false
     })
   }
-  handleChecked(e) {
-    this.props.done = e.target.checked
+  handleChecked() {
+    this.props.changeStatus(this.props.index)
   }
   render() {
     const {done, event} = this.props

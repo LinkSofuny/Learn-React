@@ -8,6 +8,7 @@ export default class App extends Component {
   constructor() {
     super()
     this.addEvent = this.addEvent.bind(this)
+    this.changeStatus = this.changeStatus.bind(this)
   }
   state = {
     isShow: false,
@@ -32,13 +33,21 @@ export default class App extends Component {
       events,
     })
   }
-  changeStatus() {
+  changeStatus(curIndex) {
+    let newEvents = this.state.events.map( (item, index) => {
+      let done = item.done
+      item.done = curIndex === index ? !done : done
+      return item
+    })
+    this.setState({
+      events: newEvents
+    })
   }
   render() {
     return (
       <div className="todo-body">
         <HeadSearch addEvent={this.addEvent}/>
-        <BodyList events={this.state.events} isShow={this.state.isShow}/>
+        <BodyList events={this.state.events} isShow={this.state.isShow} changeStatus={this.changeStatus}/>
         <FooterFinish />
       </div>
     )
