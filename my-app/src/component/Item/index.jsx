@@ -5,6 +5,7 @@ export default class Item extends Component {
     super()
     this.handleMouseEnter = this.handleMouseEnter.bind(this)
     this.handleMouseLeave = this.handleMouseLeave.bind(this)
+    this.handleChecked = this.handleChecked.bind(this)
   }
   state = {
     isShow: false
@@ -19,12 +20,15 @@ export default class Item extends Component {
       isShow: false
     })
   }
+  handleChecked(e) {
+    this.props.done = e.target.checked
+  }
   render() {
     const {done, event} = this.props
     let isShow = this.state.isShow
     return (
       <div className="body-item" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        <input type="checkbox" id="event" defaultChecked={done} />
+        <input type="checkbox" id="event" defaultChecked={done} onChange={this.handleChecked}/>
         <label  className="itme-event" >{event}</label>
         <button className={!isShow ? 'noShow' : 'item-delete'}>删除</button>
       </div>

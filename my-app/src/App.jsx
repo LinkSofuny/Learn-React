@@ -11,7 +11,16 @@ export default class App extends Component {
   }
   state = {
     isShow: false,
-    events: []
+    events: [
+      {
+        done: false,
+        event: 'ok'
+      },
+      {
+        done: false,
+        event: 'ok2'
+      }
+    ]
   }
   addEvent(val){
     let obj = {
@@ -22,6 +31,8 @@ export default class App extends Component {
     this.setState({
       events,
     })
+  }
+  changeStatus() {
   }
   render() {
     return (
