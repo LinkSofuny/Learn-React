@@ -10,7 +10,7 @@ export default class BodyList extends Component {
       <main className="body-list">
         {
           events.map( (item, index)=>{
-            return <Item {...item} index={index} key={index} className="body-item" isShow={isShow} changeStatus={changeStatus}/>
+            return <Item {...item} key={item.id} index={index} className="body-item" isShow={isShow} changeStatus={changeStatus}/>
           })
         }
       </main>

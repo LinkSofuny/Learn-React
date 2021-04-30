@@ -18,17 +18,19 @@ export default class Item extends Component {
   handleMouseLeave () {
     this.setState({
       isShow: false
+      
     })
   }
-  handleChecked() {
-    this.props.changeStatus(this.props.index)
+  handleChecked(e) {
+    let done = this.props.changeStatus(this.props.index)
+    e.target.checked = done
   }
   render() {
     const {done, event} = this.props
     let isShow = this.state.isShow
     return (
       <div className="body-item" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-        <input type="checkbox" id="event" defaultChecked={done} onChange={this.handleChecked}/>
+        <input type="checkbox" id="event" checked={done}  onChange={this.handleChecked}/>
         <label  className="itme-event" >{event}</label>
         <button className={!isShow ? 'noShow' : 'item-delete'}>删除</button>
       </div>

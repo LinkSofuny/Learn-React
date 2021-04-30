@@ -9,26 +9,22 @@ export default class App extends Component {
     super()
     this.addEvent = this.addEvent.bind(this)
     this.changeStatus = this.changeStatus.bind(this)
+    this.handleAllFinish = this.handleAllFinish.bind(this)
   }
   state = {
     isShow: false,
-    events: [
-      {
-        done: false,
-        event: 'ok'
-      },
-      {
-        done: false,
-        event: 'ok2'
-      }
-    ]
+    events: [],
+    allFinshNum: false
   }
+  index = 0
   addEvent(val){
     let obj = {
+      id: this.index++,
       done: false,
       event: val,
     }
     let events = [obj, ...this.state.events]
+
     this.setState({
       events,
     })
@@ -42,13 +38,24 @@ export default class App extends Component {
     this.setState({
       events: newEvents
     })
+    return newEvents[curIndex].done
+  }
+  handleAllFinish (checked) {
+    let newEvents = this.state.events
+    newEvents.forEach(item => {
+      item.done = checked
+    })
+    
+    this.setState({
+      events: newEvents,
+    })
   }
   render() {
     return (
       <div className="todo-body">
         <HeadSearch addEvent={this.addEvent}/>
         <BodyList events={this.state.events} isShow={this.state.isShow} changeStatus={this.changeStatus}/>
-        <FooterFinish />
+        <FooterFinish events={this.state.events} handleAllFinish={this.handleAllFinish}/>
       </div>
     )
   }
