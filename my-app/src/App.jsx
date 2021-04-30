@@ -10,6 +10,7 @@ export default class App extends Component {
     this.addEvent = this.addEvent.bind(this)
     this.changeStatus = this.changeStatus.bind(this)
     this.handleAllFinish = this.handleAllFinish.bind(this)
+    this.deleteItem = this.deleteItem.bind(this)
   }
   state = {
     isShow: false,
@@ -50,11 +51,20 @@ export default class App extends Component {
       events: newEvents,
     })
   }
+  deleteItem (index) {
+    let newEvents = this.state.events
+    newEvents = newEvents.filter( (item, i) => {
+      return index !== i
+    })
+    this.setState({
+      events: newEvents,
+    })
+  }
   render() {
     return (
       <div className="todo-body">
         <HeadSearch addEvent={this.addEvent}/>
-        <BodyList events={this.state.events} isShow={this.state.isShow} changeStatus={this.changeStatus}/>
+        <BodyList events={this.state.events} isShow={this.state.isShow} changeStatus={this.changeStatus} deleteItem={this.deleteItem}/>
         <FooterFinish events={this.state.events} handleAllFinish={this.handleAllFinish}/>
       </div>
     )
