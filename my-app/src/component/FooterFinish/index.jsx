@@ -17,7 +17,7 @@ export default class BottomFinish extends Component {
     })
     return (
       <footer className="">
-        <input type="checkbox" onChange={this.allFinsh}/> 未完成 => {doneNum}/全部 => {events.length}
+        <input type="checkbox" checked={doneNum === 0  ? true : false} onChange={this.allFinsh}/> 未完成 => {doneNum}/全部 => {events.length}
       </footer>
     )
   }
