@@ -12,12 +12,13 @@ export default class BottomFinish extends Component {
   render() {
     const { events } = this.props
     let doneNum = 0
+    let total = events.length
     events.forEach( item => {
       if (!item.done) doneNum++
     })
     return (
       <footer className="">
-        <input type="checkbox" checked={doneNum === 0  ? true : false} onChange={this.allFinsh}/> 未完成 => {doneNum}/全部 => {events.length}
+        <input type="checkbox" checked={doneNum === 0 && total !== 0  ? true : false} onChange={this.allFinsh}/> 未完成 => {doneNum}/全部 => {events.length}
       </footer>
     )
   }
