@@ -1,0 +1,14 @@
+.todo-body {
+  box-sizing: border-box;
+  width: 500px;
+  height: 300px;
+  border: 1px solid grey;
+  padding: 0 50px;
+  background-color: rgb(233, 233, 233);
+}
+.clearFix::after {
+  content: '';
+  both: clear;
+  display: block;
+  overflow: hidden;
+}

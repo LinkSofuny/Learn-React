@@ -4,7 +4,7 @@ module.exports = function (app) {
     app.use(
         proxy('api1', {
             target:'http//test:5000',
-            changeOrigin: true,
+            changeOrigin: true, // 请求头转发
             pathRewrite: {'^api1': ''}
         }),
         proxy('api2', {
