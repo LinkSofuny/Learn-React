@@ -3,8 +3,9 @@ import React, { Component } from 'react'
 export default class Search extends Component {
     render() {
         return (
-            <header className="">
-                Search
+            <header className="search-box">
+                search user by name<br />
+                <input type="text"/>
             </header>
         )
     }
