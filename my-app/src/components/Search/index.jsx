@@ -8,6 +8,10 @@ export default class Search extends Component {
     }
     searchHandle () {
         console.log(this.keyWordElement.value);
+        console.log(axios({
+            method: 'GET',
+            baseURL: 'https://api.github.com/search/users?q=xxx'
+        }));
     }
     render() {
         return (
