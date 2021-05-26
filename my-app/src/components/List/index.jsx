@@ -3,11 +3,10 @@ import Item from '../Item'
 import './index.css'
 
 export default class List extends Component {
-    render(props) {
-        console.log(this.props.items);
+    render() {
         return (
             <div className="list">
-                <Item />
+                <Item {...this.props} />
             </div>
         )
     }

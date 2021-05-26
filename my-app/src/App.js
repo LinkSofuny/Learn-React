@@ -5,19 +5,21 @@ import './App.css'
 class App extends Component {
   constructor () {
     super()
-    this.handleItems = this.handleItems.bind(this)
+    this.upDateAppstate = this.upDateAppstate.bind(this)
   }
-  items: {}
-  handleItems (items) {
-    this.setState({
-      items,
-    })
+  state = {
+    items: [],
+    isLoading: false,
+    isFirst: true,
+  }
+  upDateAppstate (state) {
+    this.setState(state)
   }
   render() {
     return (
       <div className="github-demo">
-        <Search handleItems={this.handleItems}/>
-        <List items={this.items}/>
+        <Search upDateAppstate={this.upDateAppstate}/>
+        <List {...this.state}/>
       </div>
     )
   }

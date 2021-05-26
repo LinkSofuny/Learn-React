@@ -9,9 +9,10 @@ export default class Search extends Component {
     searchHandle (e) {
     const { keyWordElement: {value: keyWord} } = this
        let items = []
+       this.props.upDateAppstate({isLoading:true, isFirst: false})
        axios.get(`https://api.github.com/search/users?q=${keyWord}`).then( res => {
         items = res.data.items
-        this.props.handleItems(items)
+        this.props.upDateAppstate({isLoading:false, items,})
        })
     }
     render() {
