@@ -3,7 +3,8 @@ import Item from '../Item'
 import './index.css'
 
 export default class List extends Component {
-    render() {
+    render(props) {
+        console.log(this.props.items);
         return (
             <div className="list">
                 <Item />
