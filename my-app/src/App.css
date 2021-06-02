@@ -8,3 +8,10 @@
     background-color: grey;
     border: 1px solid red;
 }
+.left {
+    display: flex;
+    flex-direction:column;
+}
+.active {
+    color: red;
+}
