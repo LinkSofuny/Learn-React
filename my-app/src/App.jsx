@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import About from './pages/About'
 import Home from './pages/Home'
-import { NavLink, Route} from 'react-router-dom'
+import MyNavLink from './components/MyNavLink'
+import { Route} from 'react-router-dom'
 import './App.css'
 class App extends Component {
 
@@ -10,8 +11,10 @@ class App extends Component {
       <div className="">
         <h1>React-Demo</h1>
         <nav className='left'>
-            <NavLink className="" to="/about" >About</NavLink>
-            <NavLink className="" to="/home" >Home</NavLink>
+            <MyNavLink  to="/about">
+              <h1>ok</h1>
+            </MyNavLink>
+            <MyNavLink  to="/home">Home</MyNavLink>
         </nav>
         <div className='right'>
           {/* 路由切換 */}
