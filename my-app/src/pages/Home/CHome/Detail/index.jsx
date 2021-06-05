@@ -9,6 +9,7 @@ export default class Detail extends Component {
     
     render() {
         const {search} = this.props.location
+        console.log(search);
         const { id, title } =qs.parse(search.substring(1))
         let content = msData.find( item => {
             return item.id === id
