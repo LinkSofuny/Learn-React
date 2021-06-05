@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom'
 import Detail from './Detail'
 export default class CHome extends Component {
     state = {
@@ -13,16 +13,19 @@ export default class CHome extends Component {
         const { messageArr } = this.state
         return (
             <div>
+                <h1>我是CHOME</h1>
                 <ul>
                     {
-                        messageArr.forEach( item => {
-                            <li key={item.id}>
-                                <Link to='/home/cHome/detail'>{item.title}</Link>
-                            </li>
+                        messageArr.map( item => {
+                            return (
+                                <li key={item.id}>
+                                    <Link to={`/home/cHome/detail/${item.id}/${item.title}`}>{item.title}</Link>
+                                </li>
+                            )
                         })
                     }   
                 </ul>
-                <Detail />
+                <Route  path='/home/cHome/detail/:id/:title' component={Detail} />
             </div>
         )
     }
