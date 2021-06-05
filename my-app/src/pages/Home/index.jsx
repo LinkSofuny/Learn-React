@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import MyNavLink from '../../components/MyNavLink'
-import CHome from '../CHome'
-import CAbout from '../CAbout'
+import CHome from './CHome'
+import CAbout from './CAbout'
 export default class Home extends Component {
     render() {
         return (
