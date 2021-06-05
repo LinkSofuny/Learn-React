@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import qs from 'querystring'
 const msData =[
         {id:'01', title: '消息10000'},
         {id:'02', title: '消息20000'},
@@ -8,8 +7,7 @@ const msData =[
 export default class Detail extends Component {
     
     render() {
-        const {search} = this.props.location
-        const { id, title } =qs.parse(search.substring(1))
+        const { id, title } = this.props.match.params
         let content = msData.find( item => {
             return item.id === id
         })

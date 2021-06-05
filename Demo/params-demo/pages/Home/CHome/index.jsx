@@ -19,13 +19,13 @@ export default class CHome extends Component {
                         messageArr.map( item => {
                             return (
                                 <li key={item.id}>
-                                    <Link to={`/home/cHome/detail/?id=${item.id}&title=${item.title}`}>{item.title}</Link>
+                                    <Link to={`/home/cHome/detail/${item.id}/${item.title}`}>{item.title}</Link>
                                 </li>
                             )
                         })
                     }   
                 </ul>
-                <Route  path='/home/cHome/detail' component={Detail} />
+                <Route  path='/home/cHome/detail/:id/:title' component={Detail} />
             </div>
         )
     }
