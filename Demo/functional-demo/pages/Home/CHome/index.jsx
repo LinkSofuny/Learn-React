@@ -27,6 +27,7 @@ export default class CHome extends Component {
     }
     goBack () {
         this.props.history.goBack()
+
     }
     render() {
         console.log(this.props);

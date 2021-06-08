@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import About from './pages/About'
 import Home from './pages/Home'
-import Header from './pages/Header'
 import NotMatch from './pages/NotMatch'
 import MyNavLink from './components/MyNavLink'
 import { Redirect, Route} from 'react-router-dom'
@@ -11,7 +10,7 @@ class App extends Component {
   render() {
     return (
       <div className="">
-        <Header />
+        <h1>React-Demo</h1>
         <nav className='left'>
             <MyNavLink  to="/about">
               About

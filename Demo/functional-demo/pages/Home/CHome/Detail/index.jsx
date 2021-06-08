@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import qs from 'querystring'
 const msData =[
         {id:'01', title: '消息10000'},
         {id:'02', title: '消息20000'},
