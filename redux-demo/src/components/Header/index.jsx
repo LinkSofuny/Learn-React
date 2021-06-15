@@ -1,24 +1,27 @@
 import React, { Component } from 'react'
+import store from '../../redux/store'
 export default class Header extends Component {
-    increament = () => {
-        this.setState({
-            count: +this.selectNumber.value + +this.state.count
+
+    componentDidMount () {
+        store.subscribe(()=>{
+            this.setState({})
         })
+    }
+    increament = () => {
+        store.dispatch({type: 'increment', data: +this.selectNumber.value})
+        
     }
     decreament = () => {
-        this.setState({
-            count: +this.selectNumber.value - +this.state.count
-        })
+        store.dispatch({type: 'decrement', data: +this.selectNumber.value})
+
     }
     addIfOdd = () => {
-        const count = this.state.count
+        const count = store.getState()
         if( count > 1 && count % 2 !== 0) {
             console.log('当前为奇数， 不加');
             return
         }
-        this.setState({
-            count: +this.selectNumber.value + +this.state.count
-        })
+        store.dispatch({type: 'increment', data: +this.selectNumber.value})
     }
     asyncAdd = () => {
         
@@ -30,7 +33,7 @@ export default class Header extends Component {
         return (
             <div>
                 <header>
-                    <h1>当前求和为： {this.state.count}</h1>
+                    <h1>当前求和为： {store.getState()}</h1>
                 </header>
                 <nav>
                     <select ref={c => this.selectNumber = c}>
