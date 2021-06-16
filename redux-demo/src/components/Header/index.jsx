@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import store from '../../redux/store'
-import { incrementAction, decrementAction} from '../../redux/count_action'
+import { incrementAction, decrementAction, incrementActionAsync} from '../../redux/count_action'
 export default class Header extends Component {
 
     componentDidMount () {
@@ -28,6 +28,8 @@ export default class Header extends Component {
         store.dispatch(incrementAction(value))
     }
     asyncAdd = () => {
+        const value = +this.selectNumber.value
+        store.dispatch(incrementActionAsync(value, 1000))
         
     }
     state = {
