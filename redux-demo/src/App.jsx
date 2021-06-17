@@ -1,12 +1,11 @@
 import React, { Component } from 'react'
-import Header from './components/Header'
-import Main from './components/Main'
+import Count from './containers/Count'
+import store from './redux/store'
 export default class App extends Component {
     render() {
         return (
             <div>
-                <Header />
-                <Main />
+                <Count store={store}/>
             </div>
         )
     }
