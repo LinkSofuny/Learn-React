@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import { incrementAction, incrementActionAsync, decrementAction } from "../../redux/actions/count";
+import { incrementAction, incrementActionAsync, decrementAction } from "../../redux/count_action";
 import React, { Component } from 'react'
 
 
