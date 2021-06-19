@@ -1,8 +1,5 @@
 import { ADD_PERSON } from "../constant"
-const initState = {
-    name: 'initHuman',
-    age: 0
-}
+const initState = []
 
 export default function personReducers (preState = initState, action) {
     const { type, data } = action

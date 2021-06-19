@@ -9,7 +9,7 @@ class Person extends Component {
     addPerson = () => {
         const name = this.nameNode.value
         const age = this.ageNode.value
-        console.log(this.props.persons);
+        this.props.addPerson({name, age})
     }
     render() {
         return (
@@ -18,13 +18,20 @@ class Person extends Component {
                 <input type="text" placeholder='姓名' ref={c => this.nameNode = c}/>
                 <input type="text" placeholder='年龄' ref={c => this.ageNode = c}/>
                 <button onClick={this.addPerson}>增加</button>
+                <ul>
+                    {
+                        this.props.persons.map( (item, index) => {
+                          return <li key={index}> {item.name}: {item.age}</li>
+                        })
+                    }
+                </ul>
             </div>
         )
     }
 }
 
 export default connect(
-    state => ({persons: state}),
+    state => ({persons: state.persons}),
     {
         addPerson,
     }

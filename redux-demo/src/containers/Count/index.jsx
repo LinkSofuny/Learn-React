@@ -55,7 +55,7 @@ class Count extends Component {
 }
 
 export default connect(
-    state => ({count: state}),
+    state => ({count: state.count}),
     {
         increment: incrementAction,
         incrementAsync: incrementActionAsync,
