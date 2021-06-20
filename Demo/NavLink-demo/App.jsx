@@ -11,10 +11,10 @@ class App extends Component {
       <div className="">
         <h1>React-Demo</h1>
         <nav className='left'>
-            <MyNavLink  to="/about">
+            <MyNavLink to="/about">
               <h1>ok</h1>
             </MyNavLink>
-            <MyNavLink  to="/home">Home</MyNavLink>
+            <MyNavLink to="/home">Home</MyNavLink>
         </nav>
         <div className='right'>
           {/* 路由切換 */}
@@ -23,7 +23,6 @@ class App extends Component {
         </div>
       </div>
     )
-  }
-}
+  }}
 
 export default App
