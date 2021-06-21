@@ -1,5 +1,5 @@
 import React from 'react'
-
+import ReactDom from 'react-dom'
 // class Demo extends React.Component {
 //     render() {
 //         return (
@@ -13,22 +13,19 @@ export default function Demo () {
 
     const [count, setCount] = React.useState(0)
 
-    // React.useEffect(() => {
-    //     setInterval(() => {
-    //        add()
-    //     },1000)
-    // })
-    // React.useEffect(() => {
-    //     setInterval(() => {
-    //        add()
-    //     },1000)
-    // },[])
+    
     React.useEffect(() => {
-        setInterval(() => {
+        console.log(1);
+        let timer =setInterval(() => {
            add()
         },1000)
-    },[count])
-    
+        return () => {
+            clearInterval(timer)
+        }
+    },[])
+    function unmout () {
+        ReactDom.unmountComponentAtNode(document.getElementById('root'))
+    }
     function add () {
         setCount( count => count + 1)
     }
@@ -37,6 +34,7 @@ export default function Demo () {
         <div>
             <h1>Demo: {count}</h1>
             <button onClick={add}>click</button>
+            <button onClick={unmout}>unmout</button>
         </div>
     )
 }
