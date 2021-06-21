@@ -13,8 +13,24 @@ export default function Demo () {
 
     const [count, setCount] = React.useState(0)
 
+    // React.useEffect(() => {
+    //     setInterval(() => {
+    //        add()
+    //     },1000)
+    // })
+    // React.useEffect(() => {
+    //     setInterval(() => {
+    //        add()
+    //     },1000)
+    // },[])
+    React.useEffect(() => {
+        setInterval(() => {
+           add()
+        },1000)
+    },[count])
+    
     function add () {
-        setCount( count => ++count)
+        setCount( count => count + 1)
     }
 
     return (
