@@ -1,58 +1,36 @@
-import React, { Component } from 'react'
-import './index.css'
-// import C from '../C'
-const MyContext = React.createContext()
-const {Provider, Consumer} = MyContext
-export default class index extends Component {
+import React, { Component, PureComponent } from 'react'
+
+export default class index extends PureComponent {
     state = {
-        name: 'Link',
-        age: 18
+        name: 'link'
+    }
+    shouldComponentUpdate(nextProps,nextState) {
+        // 如数据未变化， 阻止render
+        console.log('改变前', this.state, this.props);
+        console.log('改变后', nextState, nextProps);
+        return !this.state.name === nextState
+    }
+    handleClick = () => {
+        this.setState({})
     }
     render() {
-        const {name, age} = this.state
+        console.log('parent-Render');
         return (
-            <div className='grand'>
-                <h1>我是祖组件</h1>
-                <Provider value={{name,age }}>
-                    <B />
-                </Provider>
+            <div>
+                <h1>父组件： {this.state.name}</h1>
+                <button onClick={this.handleClick}>click</button>
+                <Child />
             </div>
         )
     }
 }
-class B extends Component {
+class Child extends Component {
     render() {
+        console.log('child-Render');
         return (
-            <div className='father'>
-                <h1>我是父组件</h1>
-                <C />
+            <div>
+                <h1>子组件</h1>
             </div>
         )
     }
-}
-//  class C extends Component {
-//     static contextType = MyContext
-//     render() {
-//         const {name, age} = this.context
-//         return (
-//             <div className='son'>
-//                 <h1>我是孙组件</h1>
-//                 <p>我是:{name}, 今年: {age}</p>
-//             </div>
-//         )
-//     }
-// }
-
-
-function C() {
-    return (
-        <div className='son'>
-            <h1>我是孙组件</h1>
-            <Consumer>
-                {
-                    value => <p>我是:{value.name}, 今年: {value.age}</p>
-                }
-            </Consumer>
-        </div>
-    )
 }
