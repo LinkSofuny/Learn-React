@@ -1,35 +1,38 @@
-import React, { Component, PureComponent } from 'react'
-
-export default class index extends PureComponent {
-    state = {
-        name: 'link'
-    }
-    shouldComponentUpdate(nextProps,nextState) {
-        // 如数据未变化， 阻止render
-        console.log('改变前', this.state, this.props);
-        console.log('改变后', nextState, nextProps);
-        return !this.state.name === nextState
-    }
-    handleClick = () => {
-        this.setState({})
-    }
+import React, { Component } from 'react'
+import './index.css'
+export default class index extends Component {
     render() {
-        console.log('parent-Render');
         return (
-            <div>
-                <h1>父组件： {this.state.name}</h1>
-                <button onClick={this.handleClick}>click</button>
-                <Child />
+            <div className='index' >
+                <h1 >index</h1>
+                <A render={(name, age) => <B  name={name} age={age}/>}/>
             </div>
         )
     }
 }
-class Child extends Component {
+class A extends Component {
+    state = {
+        name: '我是A传递给B的数据',
+        age: '我也是呢'
+    }
     render() {
-        console.log('child-Render');
+        
+        const { name, age } = this.state
         return (
-            <div>
-                <h1>子组件</h1>
+            <div className='A'>
+                <h1>AAA</h1>
+                {this.props.render( name, age )}
+            </div>
+        )
+    }
+}
+class B extends Component {
+    render() {
+        return (
+            <div className='B'>
+                <h1>BBB</h1>
+                {this.props.name}<br />
+                {this.props.age}
             </div>
         )
     }
