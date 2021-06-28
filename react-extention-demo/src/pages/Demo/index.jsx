@@ -17,7 +17,7 @@ export default class index extends PureComponent {
         console.log('parent-Render');
         return (
             <div>
-                <h1>父组件： {this.state.name}</h1>
+                <h1 style={{backgroundColor:'red'}}>父组件： {this.state.name}</h1>
                 <button onClick={this.handleClick}>click</button>
                 <Child />
             </div>
