@@ -5,16 +5,19 @@ export default class index extends Component {
         childName: 'Father'
     }
     changeState = () => {
-        this.setState({
-            childName: 'changedFather'
-        })
+        this.setState({})
     }
     render() {
+        console.log('render', '父组件进行渲染')
         return (
-            <div>
-                <Child title={this.state.childName} changeFatherState={this.changeState}/>
+            <div >
+                <button onClick={this.changeState} > 父组件重新render()</button>
+                <Child/>
             </div>
         )
+    }
+    componentDidMount() {
+        console.log('--------------点击click后--------------')
     }
 }
 class Child extends Component {
@@ -22,25 +25,16 @@ class Child extends Component {
     state = {
         childName: 'Link'
     }
-    changeState = () => {
-        this.props.changeFatherState()
-        this.setState({
-            childName: 'changedLink'
-        })
-    }
     shouldComponentUpdate(nextProps, nextState) {
         console.log('shouldComponentUpdate', '组件数据发生改变', '|nextProps', nextProps, '|nextState', nextState)
         return true
     }
    
-   
     render() {
         console.log('render', '进行渲染')
         return (
             <div>
-                <h1>父组件传入数据: {this.props.title}</h1>
                 <h1>本组件数据: {this.state.childName}</h1>
-                <button onClick={this.changeState}>changeState</button>
             </div>
         )
     }
