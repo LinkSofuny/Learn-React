@@ -1,12 +1,10 @@
 import React, { Component } from 'react'
-import Publish from './pages/Publish'
-import Subscribe from './pages/Subscribe'
+import Demo from './pages/Demo'
 export default class App extends Component {
     render() {
         return (
             <div>
-                <Publish />
-                <Subscribe />
+                <Demo />
             </div>
         )
     }
