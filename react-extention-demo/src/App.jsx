@@ -14,7 +14,7 @@ class App extends Component {
       <div className="">
         <h1>React-Demo</h1>
         <nav className='left'>
-            <Link to="/about" innerRef={this.refCallback}>
+            <Link to='/about/click'>
               About
             </Link>
             <Link to="/home">Home</Link>
