@@ -8,7 +8,7 @@ const getConfirmation = (message, callback) => {
     callback(allowTransition)
 }
 ReactDOM.render(
-    <BrowserRouter getUserConfirmation={getConfirmation}>
+    <BrowserRouter>
         <App />
     </BrowserRouter>
     , document.getElementById('root'))

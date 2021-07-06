@@ -6,12 +6,15 @@ import { Route,Link} from 'react-router-dom'
 import './App.css'
 class App extends Component {
 
+  refCallback = node => {
+    console.log(node)
+  }
   render() {
     return (
       <div className="">
         <h1>React-Demo</h1>
         <nav className='left'>
-            <Link to="/about">
+            <Link to="/about" innerRef={this.refCallback}>
               About
             </Link>
             <Link to="/home">Home</Link>
