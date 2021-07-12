@@ -28,9 +28,6 @@ class Count extends Component {
         this.props.incrementAsync(value, 1000)
         
     }
-    state = {
-        count: 0
-    }
     render() {
         return (
             <div>
