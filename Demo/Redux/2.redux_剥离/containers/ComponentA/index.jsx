@@ -21,9 +21,15 @@ class ComponentA extends Component {
     }
 }
 export default connect(
-    state => ({ state }),
-    {
-        addCount: addAction,
-        addCountAsync: addActionAsync,
+    (state) => {
+        return {
+            state
+        }
+    },
+    (dispatch) => {
+        return {
+           addCount: (value) => dispatch(addAction(value)),
+           addCountAsync: (value) => dispatch(addActionAsync(value)),
+        }
     }
 )(ComponentA)
