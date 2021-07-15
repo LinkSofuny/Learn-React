@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import { Route,Link} from 'react-router-dom'
-import './App.css'
+import UseState from './pages/UseState'
+import UseEffect from './pages/UseEffect'
 class App extends Component {
   state = {
     totalData: {
@@ -9,30 +9,15 @@ class App extends Component {
     }
   }
   render() {
-    const { totalData } = this.state
     return (
       <div className="">
         <h1>React-Demo</h1>
-        <nav className='left'>
-            <Link to={{pathname:'/home', state: totalData}}>Home</Link>
-        </nav>
-        <div className='right'>
-          {/* 路由切換 */}
-          <Route path='/Home' component={Home} />
-        </div>
+        {/* <UseState /> */}
+        <UseEffect />
       </div>
     )
-  }}
-class Home extends Component {
-  render() {
-    console.log(this.props.location)
-      const {title, age} = this.props.location.query
-      return (
-          <div>
-              Home: {title}
-          </div>
-      )
   }
 }
+
 
 export default App
