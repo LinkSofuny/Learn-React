@@ -1,14 +1,18 @@
 import React, { Component } from 'react'
-import A from './pages/A'
-import B from './pages/B'
+import Grandpa from './pages/Grandpa'
 import './App.css'
 class App extends Component {
-
+  state = {
+    totalData: {
+      title: '从入口文件过来的数据',
+      age : 20
+    }
+  }
   render() {
     return (
       <div className="app">
         <h1>React-Demo</h1>
-        <A render={ obj => <B {...obj} /> }/>
+        <Grandpa />
       </div>
     )
   }
