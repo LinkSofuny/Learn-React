@@ -13,22 +13,23 @@
     <script src="../React/old/react-dom.development.js"></script>
     <script src="../React/old/babel.min.js"></script>
     <script type="text/babel">
-      class Winter extends React.Component {
+      class Demo extends React.Component {
         constructor(props) {
           super(props)
-          this.state = { isHot: true }
-          this.changeState = this.changeState.bind(this)
+          this.switchFn = this.switchFn.bind(this)
         }
-        render() {
-          const isHot = this.state.isHot
-          return <div onClick={this.changeState}>今天天气很{isHot ? '热' : '冷'}</div>
+        switchFn() {
+          // ....
         }
-        changeState() {
-          this.state.isHot = !this.state.isHot
-          console.log(this.state.isHot)
+        render(){
+          return (
+            <div onClick={this.switchFn}>
+              这里是事件点击处
+            </div>
+          )
         }
-      }
-      ReactDOM.render(<Winter />, document.querySelector('#test'))
+      } 
+      ReactDOM.render(<Demo />, document.querySelector('#test'))
     </script>
   </body>
 </html>

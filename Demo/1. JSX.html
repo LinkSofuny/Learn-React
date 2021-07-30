@@ -7,20 +7,22 @@
     <title>Document</title>
   </head>
   <body>
+    <script src="../React/old/react.development.js"></script>
+    <script src="../React/old/react-dom.development.js"></script>
+    <script src="../React/old/babel.min.js"></script>
     <div id="test"></div>
-    <script src="./React/old/react.development.js"></script>
-    <script src="./React/old/react-dom.development.js"></script>
-    <script src="./React/old/babel.min.js"></script>
     <script type="text/babel">
       let data = ['a', 'b', 'c']
       // 1.创建虚拟DOM
       const VDom = (
-        <div>
-          <h1>这是大标题</h1>
-          <ul>
-            {data.map((item, index) => {
-              return <li key={index}>{item}</li>
-            })}
+        <div> {/* 必须只有一个根标签 */}
+          <h1 style={{background: 'skyblue', marginLeft: '20px'}}>这是大标题</h1>
+          <ul className='ul-class-name'>
+            {
+              data.map((item, index) => {
+                return <li  key={index}>{item}</li>
+              })
+            }
           </ul>
         </div>
       )
